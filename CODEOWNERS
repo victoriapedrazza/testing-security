@@ -1,0 +1,11 @@
+# Definir responsables por carpeta o archivos específicos
+# Formato: ruta @usuario-o-equipo
+
+# Dueños globales
+* @tu-usuario-github
+
+# Código fuente
+/src/ @equipo-desarrolladores
+
+# Documentación
+/docs/ @equipo-documentacion
