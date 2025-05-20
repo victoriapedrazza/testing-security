@@ -1,11 +1,5 @@
-# Definir responsables por carpeta o archivos específicos
-# Formato: ruta @usuario-o-equipo
-
-# Dueños globales
-* @tu-usuario-github
-
-# Código fuente
-/src/ @equipo-desarrolladores
-
-# Documentación
-/docs/ @equipo-documentacion
+# Definición de propietarios para revisión obligatoria
+* @victoriapedrazza
+# Ejemplos específicos por carpeta/archivo
+/src/ @victoriapedrazza
+/.github/workflows/ @vickypedrazza
