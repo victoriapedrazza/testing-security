@@ -1,5 +1,5 @@
 # Definición de propietarios para revisión obligatoria
-* @victoriapedrazza
+* @vickypedrazza
 # Ejemplos específicos por carpeta/archivo
-/src/ @victoriapedrazza
+/src/ @vickypedrazza
 /.github/workflows/ @vickypedrazza
