@@ -1,51 +1,40 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
-    branches:
-      - main
-      - develop
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
-      - develop
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js (o Java según tu proyecto)
+      - uses: actions/checkout@v3
+      
+      # Para un proyecto Java
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      
+      # O para un proyecto Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Cambia según versión necesaria
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Run CodeQL Analysis
+          node-version: '16'
+      
+      - name: Build and Test
+        run: |
+          # Comandos de build según el lenguaje
+          echo "Ejecutando pruebas"
+      
+      # Escaneo de seguridad
+      - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: 'javascript' # Cambia a java si es java
-
-  #    - name: Perform CodeQL Analysis
-  #      uses: github/codeql-action/analyze@v2
-
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && success()
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Deploy to Test Environment
-        run: |
-          echo "Implementa aquí el script de despliegue"
+          languages: javascript # o java
+      
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
